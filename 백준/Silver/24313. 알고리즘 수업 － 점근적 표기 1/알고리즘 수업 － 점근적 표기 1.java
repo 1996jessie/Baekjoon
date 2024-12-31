@@ -8,14 +8,19 @@ public class Main {
         int c = sc.nextInt();
         int n0 = sc.nextInt();
 
-        boolean satisfiesO = true;
+        boolean valid = true;
         for (int n = n0; n <= 100; n++) {
             if (a1 * n + a0 > c * n) {
-                satisfiesO = false;
+                valid = false;
                 break;
             }
         }
 
-        System.out.println(satisfiesO ? 1 : 0);
+        if (valid) {
+            System.out.println(1);
+        } else {
+            System.out.println(0);
+        }
     }
 }
+
