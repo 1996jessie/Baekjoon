@@ -1,11 +1,13 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        String S = sc.next();
-        int q = sc.nextInt();
+        String S = br.readLine();
+        int q = Integer.parseInt(br.readLine());
 
         int[][] prefixSum = new int[26][S.length() + 1];
 
@@ -18,10 +20,12 @@ public class Main {
         }
 
         StringBuilder result = new StringBuilder();
+
         for (int i = 0; i < q; i++) {
-            char alpha = sc.next().charAt(0);
-            int l = sc.nextInt();
-            int r = sc.nextInt();
+            String[] query = br.readLine().split(" ");
+            char alpha = query[0].charAt(0);
+            int l = Integer.parseInt(query[1]);
+            int r = Integer.parseInt(query[2]);
 
             int charIndex = alpha - 'a';
             int count = prefixSum[charIndex][r + 1] - prefixSum[charIndex][l];
@@ -29,6 +33,5 @@ public class Main {
         }
 
         System.out.print(result);
-        sc.close();
     }
 }
