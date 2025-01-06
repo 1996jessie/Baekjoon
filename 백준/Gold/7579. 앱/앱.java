@@ -1,21 +1,26 @@
+import java.io.*;
 import java.util.*;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        int N = sc.nextInt();
-        int M = sc.nextInt();
+        String[] input = br.readLine().split(" ");
+        int N = Integer.parseInt(input[0]);
+        int M = Integer.parseInt(input[1]);
 
         int[] memory = new int[N];
         int[] cost = new int[N];
 
+        input = br.readLine().split(" ");
         for (int i = 0; i < N; i++) {
-            memory[i] = sc.nextInt();
+            memory[i] = Integer.parseInt(input[i]);
         }
 
+        input = br.readLine().split(" ");
         for (int i = 0; i < N; i++) {
-            cost[i] = sc.nextInt();
+            cost[i] = Integer.parseInt(input[i]);
         }
 
         int totalMemory = 0;
@@ -40,7 +45,8 @@ public class Main {
             minCost = Math.min(minCost, dp[i]);
         }
 
-        System.out.println(minCost);
+        bw.write(String.valueOf(minCost));
+        bw.flush();
+        bw.close();
     }
 }
-
