@@ -1,18 +1,22 @@
+import java.io.*;
 import java.util.*;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int N = sc.nextInt();
-        int M = sc.nextInt();
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        int N = Integer.parseInt(st.nextToken());
+        int M = Integer.parseInt(st.nextToken());
         int[][] lamps = new int[N][M];
         for (int i = 0; i < N; i++) {
-            String line = sc.next();
+            String line = br.readLine();
             for (int j = 0; j < M; j++) {
                 lamps[i][j] = line.charAt(j) - '0';
             }
         }
-        int K = sc.nextInt();
+        int K = Integer.parseInt(br.readLine());
 
         Map<String, Integer> rowCount = new HashMap<>();
         for (int i = 0; i < N; i++) {
@@ -39,6 +43,9 @@ public class Main {
             }
         }
 
-        System.out.println(maxRows);
+        bw.write(maxRows + "\n");
+        bw.flush();
+        bw.close();
+        br.close();
     }
 }
