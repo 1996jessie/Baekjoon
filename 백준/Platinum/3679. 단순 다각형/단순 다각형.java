@@ -17,17 +17,24 @@ class Main {
     }
 
     static int compAscXAscY(Point a, Point b) {
-        if (a.x == b.x) return Long.compare(a.y, b.y);
-        return Long.compare(a.x, b.x);
+        if (a.x == b.x) {
+            return Long.compare(a.y, b.y);
+        } else {
+            return Long.compare(a.x, b.x);
+        }
     }
 
     static int comp(Point a, Point b, Point p0) {
         long res = ccw(p0.x, p0.y, a.x, a.y, b.x, b.y);
         if (res == 0) {
-            if (a.x == b.x) return Long.compare(a.y, b.y);
-            return Long.compare(a.x, b.x);
+            if (a.x == b.x) {
+                return Long.compare(a.y, b.y);
+            } else {
+                return Long.compare(a.x, b.x);
+            }
+        } else {
+            return Long.compare(res, 0);
         }
-        return Long.compare(res, 0);
     }
 
     public static void main(String[] args) {
@@ -47,7 +54,9 @@ class Main {
             pos.subList(1, n).sort((a, b) -> Main.comp(a, b, p0));
 
             int i = n - 2;
-            for (; i >= 0 && ccw(p0.x, p0.y, pos.get(i).x, pos.get(i).y, pos.get(i + 1).x, pos.get(i + 1).y) == 0; i--);
+            while (i >= 0 && ccw(p0.x, p0.y, pos.get(i).x, pos.get(i).y, pos.get(i + 1).x, pos.get(i + 1).y) == 0) {
+                i--;
+            }
 
             for (int j = 0; j <= i; j++) {
                 System.out.print(pos.get(j).idx + " ");
