@@ -28,9 +28,11 @@ public class Main {
 
     static String recur(boolean big, int index, int bit, int dif) {
         if (index == len) {
-            if (dif == k) check = true;
-            else check = false;
-
+            if (dif == k) {
+                check = true;
+            } else {
+                check = false;
+            }
             return dp[big ? 1 : 0][index].get(bit);
         }
 
@@ -47,7 +49,9 @@ public class Main {
             result = current;
             dp[big ? 1 : 0][index].set(bit, result);
 
-            if (check) return result;
+            if (check) {
+                return result;
+            }
         }
 
         if (index == 0) {
